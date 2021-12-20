@@ -74,15 +74,11 @@ class UserRegistration : AppCompatActivity() {
                                         Toast.LENGTH_SHORT
                                     ).show()
 
-                                    /**
-                                     * Here the new user registered is automatically signed-in so we just sign-out the user from firebase
-                                     * and send him to Main Screen with user id and email that user have used for registration.
-                                     */
 
                                     val intent =
                                         Intent(this@UserRegistration, MainActivity::class.java)
                                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                    intent.putExtra("name", name)
+                                    intent.putExtra("name", firebaseUser.displayName)
                                     intent.putExtra("user_id", firebaseUser.uid)
                                     intent.putExtra("email_id", email)
                                     startActivity(intent)

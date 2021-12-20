@@ -15,10 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val name = intent.getStringExtra("name")
         val emailId = intent.getStringExtra("email_id")
-
-        tv_name.text = "name :: $name"
 
         tv_email_id.text = "Email ID :: $emailId"
         // END
@@ -48,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             // Message board from app.
             FirebaseAuth.getInstance().currentUser
 
-            startActivity(Intent(this@MainActivity, Chat::class.java))
+            startActivity(Intent(this@MainActivity, Users::class.java))
             finish()
 
 

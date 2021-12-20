@@ -12,13 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CapstoneProject">
         <activity
+            android:name=".Login"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.CapstoneProject.NoActionBar" />
+        <activity
+            android:name=".model.User_Model_Faculty_Update"
+            android:exported="false" />
+        <activity
+            android:name=".model.User_Model_Student_Update"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".Users"
+            android:exported="false" />
+        <activity
             android:name=".Chat"
-            android:exported="false" />
-        <activity
-            android:name=".model.User_Model_Faculty"
-            android:exported="false" />
-        <activity
-            android:name=".model.User_Model_Student"
             android:exported="false" />
         <activity
             android:name=".ProfilePage"
@@ -27,22 +38,16 @@
             android:name=".HomePage"
             android:exported="false" />
         <activity
-            android:name=".User"
-            android:exported="false" />
-        <activity
-            android:name=".MyProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="true" />
         <activity
             android:name=".UserRegistration"
             android:exported="true" />
         <activity
-            android:name=".UserAuthenticatin"
+            android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".UserAuthenticatin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

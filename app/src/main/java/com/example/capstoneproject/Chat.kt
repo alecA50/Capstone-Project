@@ -1,22 +1,25 @@
 package com.example.capstoneproject
 
-import android.os.Bundle
-import android.view.View
-import android.view.ViewGroup
-import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
-import com.firebase.client.ChildEventListener
-import com.firebase.client.DataSnapshot
-import com.firebase.client.Firebase
-import com.firebase.client.FirebaseError
-import java.util.*
-import java.util.HashMap;
-import java.util.Map;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity
+
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
 
 
 
@@ -38,9 +41,9 @@ class Chat : AppCompatActivity() {
         scrollView = findViewById<View>(R.id.scrollView) as ScrollView
         Firebase.setAndroidContext(this)
         reference1 =
-            Firebase("https://mycapstoneprojecta-default-rtdb.firebaseio.com/messages" + UserDetails.username.toString() + "_" + UserDetails.chatWith)
+            Firebase("https://mycapstoneprojecta-default-rtdb.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith)
         reference2 =
-            Firebase("https://mycapstoneprojecta-default-rtdb.firebaseio.com/messages" + UserDetails.chatWith.toString() + "_" + UserDetails.username)
+            Firebase("https://mycapstoneprojecta-default-rtdb.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.username)
         sendButton!!.setOnClickListener {
             val messageText = messageArea!!.text.toString()
             if (messageText != "") {
@@ -54,13 +57,18 @@ class Chat : AppCompatActivity() {
         }
         reference1!!.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String) {
-                val map = dataSnapshot.getValue(Map::class.java) as Map<String, String>
+                val map = dataSnapshot.value as Map<String, Any>
                 val message = map["message"].toString()
                 val userName = map["user"].toString()
                 if (userName == UserDetails.username) {
                     addMessageBox("You:-\n$message", 1)
                 } else {
-                    addMessageBox(UserDetails.chatWith.toString() + ":-\n" + message, 2)
+                    addMessageBox(
+                        """
+                            ${UserDetails.chatWith}:-
+                            $message
+                            """.trimIndent(), 2
+                    )
                 }
             }
 
