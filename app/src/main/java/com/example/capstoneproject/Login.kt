@@ -48,7 +48,7 @@ class Login : AppCompatActivity() {
             } else if (pass == "") {
                 password!!.error = "can't be blank"
             } else {
-                val url = "https://android-chat-app-e711d.firebaseio.com/users.json"
+                val url = "https://mycapstoneprojecta-default-rtdb.firebaseio.com/user.json"
                 val pd = ProgressDialog(this@Login)
                 pd.setMessage("Loading...")
                 pd.show()

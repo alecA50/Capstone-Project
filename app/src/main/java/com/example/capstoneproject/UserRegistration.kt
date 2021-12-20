@@ -22,13 +22,6 @@ class UserRegistration : AppCompatActivity() {
         // START
         btn_register.setOnClickListener {
             when {
-                TextUtils.isEmpty(et_register_name.text.toString().trim { it <= ' ' }) -> {
-                    Toast.makeText(
-                        this@UserRegistration,
-                        "Please enter name.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
                 TextUtils.isEmpty(et_register_email.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this@UserRegistration,
@@ -44,6 +37,7 @@ class UserRegistration : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+                // I will go back and add password validations.
                 TextUtils.isEmpty(et_register_confirm_password.text.toString().trim { it <= ' ' }) -> {
                     Toast.makeText(
                         this@UserRegistration,
@@ -52,7 +46,7 @@ class UserRegistration : AppCompatActivity() {
                     ).show()
                 }
                 else -> {
-                    val name: String = et_register_name.text.toString().trim { it <= ' ' }
+
                     val email: String = et_register_email.text.toString().trim { it <= ' ' }
                     val password: String = et_register_password.text.toString().trim { it <= ' ' }
                     val confirm_password: String = et_register_confirm_password.text.toString().trim { it <= ' ' }
@@ -76,9 +70,8 @@ class UserRegistration : AppCompatActivity() {
 
 
                                     val intent =
-                                        Intent(this@UserRegistration, MainActivity::class.java)
+                                        Intent(this@UserRegistration, UserAuthenticatin::class.java)
                                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                    intent.putExtra("name", firebaseUser.displayName)
                                     intent.putExtra("user_id", firebaseUser.uid)
                                     intent.putExtra("email_id", email)
                                     startActivity(intent)

@@ -29,9 +29,6 @@
             android:name=".Users"
             android:exported="false" />
         <activity
-            android:name=".Chat"
-            android:exported="false" />
-        <activity
             android:name=".ProfilePage"
             android:exported="false" />
         <activity
@@ -42,6 +39,9 @@
             android:exported="true" />
         <activity
             android:name=".UserRegistration"
+            android:exported="true" />
+        <activity
+            android:name=".Chat"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

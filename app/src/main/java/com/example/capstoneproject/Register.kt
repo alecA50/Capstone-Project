@@ -34,7 +34,7 @@ class Register : AppCompatActivity() {
         registerButton = findViewById<View>(R.id.registerButton) as Button
         login = findViewById<View>(R.id.login) as TextView
         Firebase.setAndroidContext(this)
-        login!!.setOnClickListener { startActivity(Intent(this@Register, MainActivity::class.java)) }
+        login!!.setOnClickListener { startActivity(Intent(this@Register, Chat::class.java)) }
         registerButton!!.setOnClickListener {
             user = username!!.text.toString()
             pass = password!!.text.toString()
@@ -55,7 +55,7 @@ class Register : AppCompatActivity() {
                     Request.Method.GET, url,
                     { s ->
                         val reference =
-                            Firebase("https://mycapstoneprojecta-default-rtdb.firebaseio.com/user")
+                            Firebase("https://mycapstoneprojecta-default-rtdb.firebaseio.com/user.json")
                         if (s == "null") {
                             reference.child(user).child("password").setValue(pass)
                             Toast.makeText(
